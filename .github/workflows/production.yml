@@ -58,15 +58,15 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: kaw393939/rest_api:${{ github.sha }} # Uses the Git SHA for tagging
+          tags: bharath1100/rest_api:${{ github.sha }} # Uses the Git SHA for tagging
           platforms: linux/amd64,linux/arm64 # Multi-platform support
-          cache-from: type=registry,ref=kaw393939/devops_demo:cache
+          cache-from: type=registry,ref=kaw393939/devops_demo:cache # Verify if this cache image exists or use your own
           cache-to: type=inline,mode=max
           
-      - name: Scan the Docker image
-        uses: aquasecurity/trivy-action@master
+      - name: Scan the Docker image for vulnerabilities
+        uses: aquasecurity/trivy-action@v0.6.0 # Pin this to a stable version
         with:
-          image-ref: 'bharath1100/devops_demo:${{ github.sha }}'
+          image-ref: 'bharath1100/rest_api:${{ github.sha }}'
           format: 'table'
           exit-code: '1' # Fail the job if vulnerabilities are found
           ignore-unfixed: true
