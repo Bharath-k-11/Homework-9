@@ -3,10 +3,10 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   test:
@@ -58,15 +58,18 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: bharath1100/rest_api:${{ github.sha }} # Uses the Git SHA for tagging
-          platforms: linux/amd64,linux/arm64 # Multi-platform support
-          cache-from: type=registry,ref=kaw393939/devops_demo:cache # Verify if this cache image exists or use your own
+          tags: bharath1100/restapi:${{ github.sha }}
+          platforms: linux/amd64,linux/arm64
+          cache-from: type=registry,ref=krisa1329/restapi:cache
           cache-to: type=inline,mode=max
-          
-      - name: Scan the Docker image for vulnerabilities
-        uses: aquasecurity/trivy-action@v0.3.0 # Updated version here
+
+      - name: Check Docker Image
+        run: docker images  # Check the list of images to ensure the image exists
+
+      - name: Scan the Docker image
+        uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'bharath1100/rest_api:${{ github.sha }}'
+          image-ref: 'bharath1100/restapi:${{ github.sha }}'
           format: 'table'
           exit-code: '1' # Fail the job if vulnerabilities are found
           ignore-unfixed: true
