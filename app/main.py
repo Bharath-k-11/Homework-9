@@ -1,5 +1,4 @@
-from fastapi import FastAPI, Depends
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from fastapi import FastAPI
 from app.config import QR_DIRECTORY
 from app.routers import qr_code, oauth  # Make sure these imports match your project structure.
 from app.services.qr_service import create_directory

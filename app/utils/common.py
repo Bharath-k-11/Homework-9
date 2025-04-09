@@ -76,7 +76,7 @@ def encode_url_to_filename(url):
 def decode_filename_to_url(encoded_str: str) -> str:
     """
     Decodes a base64 encoded string back into a URL, adding padding if necessary.
-    This reverses the process done by encode_url_to_filename.
+    This reverses the process done by `encode_url_to_filename`.
     """
     padding_needed = 4 - (len(encoded_str) % 4)
     if padding_needed:
