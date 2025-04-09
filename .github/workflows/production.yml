@@ -58,7 +58,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: bharath1100/qr_code_api_broken_code:${{ github.sha }} # Uses the Git SHA for tagging
+          tags: bharath1100/qr_code_api_broken_code-fastapi:latest:${{ github.sha }} # Uses the Git SHA for tagging
           platforms: linux/amd64,linux/arm64 # Multi-platform support
           cache-from: type=registry,ref=kaw393939/devops_demo:cache # Verify if this cache image exists or use your own
           cache-to: type=inline,mode=max
@@ -66,7 +66,7 @@ jobs:
       - name: Scan the Docker image for vulnerabilities
         uses: aquasecurity/trivy-action@v0.22.0  # Use the latest stable version here
         with:
-          image-ref: 'bharath1100/qr_code_api_broken_code:${{ github.sha }}'
+          image-ref: 'bharath1100/qr_code_api_broken_code-fastapi:latest:${{ github.sha }}'
           format: 'table'
           exit-code: '1'  # Fail the job if vulnerabilities are found
           ignore-unfixed: true
