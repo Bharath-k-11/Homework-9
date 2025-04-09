@@ -64,7 +64,7 @@ jobs:
           cache-to: type=inline,mode=max
           
       - name: Scan the Docker image for vulnerabilities
-        uses: aquasecurity/trivy-action@v0.6.0 # Pin this to a stable version
+        uses: aquasecurity/trivy-action@v0.3.0 # Updated version here
         with:
           image-ref: 'bharath1100/rest_api:${{ github.sha }}'
           format: 'table'
