@@ -11,4 +11,9 @@ Screenshots of FastAPI Running with Swagger UI
 
 <img width="1438" alt="Screenshot 2025-04-08 at 9 43 49 PM" src="https://github.com/user-attachments/assets/9271feee-9eb6-449f-bed3-4675678cf966" />
 
+Docker Operation
+
+<img width="1438" alt="Screenshot 2025-04-08 at 11 55 38 PM" src="https://github.com/user-attachments/assets/483c2314-ce02-461b-ac00-7a68f651c5e7" />
+
+
 
