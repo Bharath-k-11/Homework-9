@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.10.12] # Define Python versions here
+        python-version: [3.10.12]
     steps:
       - uses: actions/checkout@v4
       
@@ -58,8 +58,8 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: bharath1100/rest_api:${{ github.sha }} # Uses the Git SHA for tagging
-          platforms: linux/amd64,linux/arm64 # Multi-platform support
+          tags: bharath1100/rest_api:${{ github.sha }}
+          platforms: linux/amd64,linux/arm64 
           cache-from: type=registry,ref=bharath1100/rest_api:cache
           cache-to: type=inline,mode=max
           
@@ -68,6 +68,7 @@ jobs:
         with:
           image-ref: 'bharath1100/rest_api:${{ github.sha }}'
           format: 'table'
-          exit-code: '1' # Fail the job if vulnerabilities are found
+          exit-code: '1'
           ignore-unfixed: true
-          severity: 'CRITICAL,HIGH
+          severity: 'CRITICAL,HIGH'
+  
